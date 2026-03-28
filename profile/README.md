@@ -1,6 +1,6 @@
 <div align="center">
 
-![Aevyra](https://raw.githubusercontent.com/aevyraai/.github/main/profile/aevyra-logo-final.svg)
+![Aevyra](https://raw.githubusercontent.com/aevyraai/.github/main/profile/aevyra-logo.svg)
 
 </div>
 

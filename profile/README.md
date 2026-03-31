@@ -6,34 +6,27 @@
 
 ---
 
-Aevyra is an open-source org building infrastructure for large language models. Not wrappers around existing APIs — tooling that works at the layers below that: GPU kernels, fine-tuning pipelines, and the runtime systems that make models actually useful in production.
+Building the infrastructure layer for the age of intelligent systems.
 
-The projects span the full stack. Some are low-level (Triton kernels for attention and quantization). Some are higher up (agentic fine-tuning pipelines). Some are end-user systems (a personal assistant architecture that isn't just a chatbot with memory). They're connected by a shared thesis: the interesting work in AI right now is infrastructure, not prompting.
+The wave of capable foundation models has created a new problem: the tooling to actually use them well doesn't exist yet. Not at the level that matters — benchmarking, adaptation, deployment, and the runtime systems that let models operate autonomously in the real world. That's what Aevyra is building. Open-source, from first principles, at every layer of the stack.
 
 ## What we're building
 
-**GPU kernel optimizations**
-Most LLM inference bottlenecks aren't in the model architecture — they're in how efficiently the underlying operations run on hardware. These projects target attention, matrix multiplication, and quantization at the Triton level, where there's still significant headroom between what PyTorch gives you out of the box and what the hardware can actually do.
+**[verdict](https://github.com/aevyraai/verdict)** — LLM benchmarking. Before you can improve a model's behavior, you need a way to measure it. Verdict runs your prompts across any combination of models and providers, scores the responses with pluggable metrics, and gives you a side-by-side comparison. The foundation for everything else: model selection, prompt engineering, and knowing whether your fine-tuning is actually working.
 
-**Agentic fine-tuning**
-Fine-tuning a model well requires good data curation, careful eval design, and knowing when to stop — none of which scales with manual iteration. The goal here is a pipeline that closes that loop automatically: generate candidates, evaluate outputs, curate the training set, train, and repeat until the model meets a defined quality bar.
+**aevyra-reflex** — agentic runtime. Models are only as useful as the systems they operate within. Reflex is a runtime for building agents that reason, act, and recover from failure — built around the idea that reliable agentic behavior requires more than a loop and a tool list. Currently in development.
 
-**Personal intelligence systems**
-Current personal assistants are stateless by design — each conversation starts from scratch. The gap between "AI assistant" and something genuinely useful is persistent context: knowing what you're working on, how you think, and what you've already decided. This project is an attempt to build that architecture from first principles rather than bolt memory onto an existing chat interface.
+**Fine-tuning infrastructure** — closing the loop between evaluation and training. Good fine-tuning requires good data curation, careful eval design, and knowing when to stop — none of which scales with manual iteration. The goal is a pipeline that automates this cycle: evaluate, curate, train, repeat.
 
 ## Released
 
-**[aevyra-verdict](https://github.com/aevyraai/verdict)** — benchmark any LLM against your data. Run prompts across GPT-4o, Claude, Gemini, Llama and any other model, score the responses with ROUGE, BLEU, LLM-as-judge, or custom metrics, and get a side-by-side comparison table. Use it to pick the right model for a task, or to measure whether your prompt engineering and fine-tuning is actually moving the needle.
+**[aevyra-verdict](https://github.com/aevyraai/verdict)** — benchmark any LLM against your data.
 
 ```bash
 pip install aevyra-verdict
 ```
 
 → [Docs](https://aevyra.mintlify.app/verdict/introduction) · [PyPI](https://pypi.org/project/aevyra-verdict/)
-
-## Status
-
-Active development. If you're interested in contributing or following along, watch the org or reach out directly.
 
 ## Get involved
 

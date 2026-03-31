@@ -21,9 +21,19 @@ Fine-tuning a model well requires good data curation, careful eval design, and k
 **Personal intelligence systems**
 Current personal assistants are stateless by design — each conversation starts from scratch. The gap between "AI assistant" and something genuinely useful is persistent context: knowing what you're working on, how you think, and what you've already decided. This project is an attempt to build that architecture from first principles rather than bolt memory onto an existing chat interface.
 
+## Released
+
+**[aevyra-verdict](https://github.com/aevyraai/verdict)** — benchmark any LLM against your data. Run prompts across GPT-4o, Claude, Gemini, Llama and any other model, score the responses with ROUGE, BLEU, LLM-as-judge, or custom metrics, and get a side-by-side comparison table. Use it to pick the right model for a task, or to measure whether your prompt engineering and fine-tuning is actually moving the needle.
+
+```bash
+pip install aevyra-verdict
+```
+
+→ [Docs](https://aevyra.mintlify.app/verdict/introduction) · [PyPI](https://pypi.org/project/aevyra-verdict/)
+
 ## Status
 
-Early development. No stable releases yet. If you're interested in contributing or following along, watch the org or reach out directly.
+Active development. If you're interested in contributing or following along, watch the org or reach out directly.
 
 ## Get involved
 

@@ -1,185 +1,215 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520" width="680" height="520">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480" width="680" height="480">
 <defs>
-  <radialGradient id="bg" cx="50%" cy="50%" r="70%">
-    <stop offset="0%" stop-color="#06090f"/>
-    <stop offset="100%" stop-color="#010208"/>
+
+  <!-- Background -->
+  <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+    <stop offset="0%"   stop-color="#0d1828"/>
+    <stop offset="60%"  stop-color="#080e1a"/>
+    <stop offset="100%" stop-color="#030609"/>
   </radialGradient>
 
+  <!-- Accretion disk warm glow -->
+  <radialGradient id="diskGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#ff8800" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#ff4400" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Left signal gradient -->
   <linearGradient id="sigL" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%"   stop-color="#00ddff" stop-opacity="0.0"/>
-    <stop offset="30%"  stop-color="#00ddff" stop-opacity="0.9"/>
-    <stop offset="75%"  stop-color="#0077cc" stop-opacity="0.6"/>
-    <stop offset="100%" stop-color="#003388" stop-opacity="0.0"/>
+    <stop offset="0%"   stop-color="#00ddff" stop-opacity="0"/>
+    <stop offset="25%"  stop-color="#00ddff" stop-opacity="0.95"/>
+    <stop offset="75%"  stop-color="#0088cc" stop-opacity="0.7"/>
+    <stop offset="100%" stop-color="#004488" stop-opacity="0"/>
   </linearGradient>
 
+  <!-- Right signal gradient -->
   <linearGradient id="sigR" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%"   stop-color="#6600cc" stop-opacity="0.0"/>
-    <stop offset="25%"  stop-color="#8822ee" stop-opacity="0.6"/>
-    <stop offset="70%"  stop-color="#cc66ff" stop-opacity="0.9"/>
-    <stop offset="100%" stop-color="#cc66ff" stop-opacity="0.0"/>
+    <stop offset="0%"   stop-color="#7700cc" stop-opacity="0"/>
+    <stop offset="25%"  stop-color="#9933dd" stop-opacity="0.7"/>
+    <stop offset="75%"  stop-color="#dd77ff" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#dd77ff" stop-opacity="0"/>
   </linearGradient>
 
-  <linearGradient id="tealG" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%"   stop-color="#88ffee"/>
-    <stop offset="40%"  stop-color="#00ddcc"/>
-    <stop offset="100%" stop-color="#008877"/>
+  <!-- Wordmark gradient -->
+  <linearGradient id="wordGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#aaffee"/>
+    <stop offset="35%"  stop-color="#00ffdd"/>
+    <stop offset="100%" stop-color="#00aa88"/>
   </linearGradient>
 
-  <radialGradient id="glowL" cx="50%" cy="50%" r="50%">
-    <stop offset="0%"   stop-color="#004488" stop-opacity="0.5"/>
-    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="glowR" cx="50%" cy="50%" r="50%">
-    <stop offset="0%"   stop-color="#220044" stop-opacity="0.4"/>
+  <!-- Ambient blue glow left -->
+  <radialGradient id="ambL" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#0055aa" stop-opacity="0.5"/>
     <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
   </radialGradient>
 
-  <filter id="tealGlow" x="-20%" y="-60%" width="140%" height="220%">
-    <feGaussianBlur stdDeviation="8" result="blur"/>
-    <feMerge>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
+  <!-- Ambient purple glow right -->
+  <radialGradient id="ambR" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#330066" stop-opacity="0.45"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Filters -->
+  <filter id="diskBloom" x="-30%" y="-200%" width="160%" height="500%">
+    <feGaussianBlur stdDeviation="10" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="tealGlowSoft" x="-20%" y="-60%" width="140%" height="220%">
-    <feGaussianBlur stdDeviation="18" result="blur"/>
-    <feMerge>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
+  <filter id="softBloom" x="-20%" y="-100%" width="140%" height="300%">
+    <feGaussianBlur stdDeviation="6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="tagGlow" x="-20%" y="-80%" width="140%" height="360%">
-    <feGaussianBlur stdDeviation="5" result="blur"/>
-    <feMerge>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
+  <filter id="wordGlow" x="-15%" y="-80%" width="130%" height="260%">
+    <feGaussianBlur stdDeviation="12" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="tagGlow" x="-20%" y="-120%" width="140%" height="340%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="holeEdge" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="signalGlow" x="-5%" y="-100%" width="110%" height="300%">
+    <feGaussianBlur stdDeviation="3" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
 
-  <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
-  <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
-  <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
 </defs>
 
-<!-- Background -->
-<rect width="680" height="520" fill="url(#bg)"/>
+<!-- ── Background ──────────────────────────────────────── -->
+<rect width="680" height="480" fill="url(#bg)"/>
 
-<!-- Stars -->
-<g opacity="0.45">
-  <circle cx="88"  cy="72"  r="1.2" fill="#ffffff"/>
-  <circle cx="195" cy="48"  r="0.8" fill="#aaddff"/>
-  <circle cx="318" cy="42"  r="1.0" fill="#ffffff"/>
-  <circle cx="455" cy="52"  r="0.8" fill="#ffeecc"/>
-  <circle cx="572" cy="68"  r="1.1" fill="#ffffff"/>
-  <circle cx="625" cy="165" r="0.8" fill="#ddbbff"/>
-  <circle cx="635" cy="295" r="0.9" fill="#ffffff"/>
-  <circle cx="598" cy="378" r="0.8" fill="#aaddff"/>
-  <circle cx="72"  cy="375" r="0.9" fill="#ffffff"/>
-  <circle cx="48"  cy="248" r="0.8" fill="#aaddff"/>
-  <circle cx="62"  cy="142" r="1.0" fill="#ffffff"/>
-  <circle cx="155" cy="398" r="0.8" fill="#ddbbff"/>
-  <circle cx="512" cy="395" r="0.8" fill="#ffddaa"/>
-  <circle cx="248" cy="405" r="0.9" fill="#ffffff"/>
-  <circle cx="432" cy="408" r="0.8" fill="#ffffff"/>
+<!-- Stars — more, brighter -->
+<g>
+  <circle cx="55"  cy="52"  r="1.4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="140" cy="35"  r="0.9" fill="#aaddff" opacity="0.85"/>
+  <circle cx="228" cy="62"  r="1.1" fill="#ffffff" opacity="0.8"/>
+  <circle cx="318" cy="28"  r="1.0" fill="#ffffff" opacity="0.9"/>
+  <circle cx="400" cy="44"  r="0.8" fill="#ffeecc" opacity="0.85"/>
+  <circle cx="490" cy="38"  r="1.2" fill="#ffffff" opacity="0.8"/>
+  <circle cx="578" cy="55"  r="1.0" fill="#ddbbff" opacity="0.9"/>
+  <circle cx="638" cy="120" r="0.9" fill="#ffffff" opacity="0.8"/>
+  <circle cx="648" cy="240" r="1.1" fill="#aaddff" opacity="0.85"/>
+  <circle cx="628" cy="355" r="0.9" fill="#ffffff" opacity="0.8"/>
+  <circle cx="48"  cy="290" r="1.0" fill="#aaddff" opacity="0.85"/>
+  <circle cx="35"  cy="170" r="0.9" fill="#ffffff" opacity="0.8"/>
+  <circle cx="72"  cy="390" r="1.1" fill="#ddbbff" opacity="0.85"/>
+  <circle cx="162" cy="415" r="0.9" fill="#ffffff" opacity="0.8"/>
+  <circle cx="260" cy="428" r="1.0" fill="#ffffff" opacity="0.85"/>
+  <circle cx="420" cy="422" r="0.9" fill="#ffddaa" opacity="0.8"/>
+  <circle cx="518" cy="410" r="1.1" fill="#ffffff" opacity="0.85"/>
+  <circle cx="195" cy="78"  r="0.7" fill="#ccffee" opacity="0.7"/>
+  <circle cx="455" cy="68"  r="0.8" fill="#ffffff" opacity="0.75"/>
+  <circle cx="88"  cy="310" r="0.8" fill="#bbddff" opacity="0.7"/>
 </g>
 
-<!-- Ambient glows -->
-<ellipse cx="248" cy="228" rx="95" ry="45" fill="url(#glowL)" filter="url(#blur12)"/>
-<ellipse cx="432" cy="228" rx="95" ry="45" fill="url(#glowR)" filter="url(#blur12)"/>
+<!-- ── Ambient glows ────────────────────────────────────── -->
+<ellipse cx="230" cy="210" rx="110" ry="55" fill="url(#ambL)"/>
+<ellipse cx="450" cy="210" rx="110" ry="55" fill="url(#ambR)"/>
 
-<!-- Accretion disk -->
-<ellipse cx="340" cy="228" rx="188" ry="32" fill="none" stroke="#441100" stroke-width="22" opacity="0.45" filter="url(#blur12)"/>
-<ellipse cx="340" cy="228" rx="165" ry="26" fill="none" stroke="#882200" stroke-width="12" opacity="0.5"  filter="url(#blur6)"/>
-<ellipse cx="340" cy="228" rx="142" ry="20" fill="none" stroke="#cc5500" stroke-width="7"  opacity="0.6"  filter="url(#blur3)"/>
-<ellipse cx="340" cy="228" rx="122" ry="15" fill="none" stroke="#ee7700" stroke-width="4"  opacity="0.7"/>
-<ellipse cx="340" cy="228" rx="106" ry="11" fill="none" stroke="#ff9922" stroke-width="2"  opacity="0.85"/>
-<ellipse cx="340" cy="228" rx="106" ry="11" fill="none" stroke="#ffcc55" stroke-width="0.8" opacity="0.9"/>
+<!-- ── Accretion disk — outermost warm bloom ────────────── -->
+<ellipse cx="340" cy="210" rx="200" ry="36" fill="url(#diskGlow)" filter="url(#diskBloom)"/>
 
-<!-- LEFT signal wave -->
-<path d="M108,228 C128,198 152,258 172,228 C184,210 196,246 206,228 C212,218 218,238 223,228 C227,221 231,235 234,228 C236,224 238,232 240,228"
-  fill="none" stroke="url(#sigL)" stroke-width="2.2" stroke-linecap="round"/>
-<path d="M108,228 C128,198 152,258 172,228 C184,210 196,246 206,228 C212,218 218,238 223,228 C227,221 231,235 234,228 C236,224 238,232 240,228"
-  fill="none" stroke="#00ccff" stroke-width="6" stroke-linecap="round" opacity="0.1" filter="url(#blur3)"/>
+<!-- Disk rings — progressively brighter inward -->
+<ellipse cx="340" cy="210" rx="195" ry="34" fill="none" stroke="#551100" stroke-width="28" opacity="0.5"  filter="url(#diskBloom)"/>
+<ellipse cx="340" cy="210" rx="175" ry="29" fill="none" stroke="#882200" stroke-width="16" opacity="0.65" filter="url(#softBloom)"/>
+<ellipse cx="340" cy="210" rx="158" ry="24" fill="none" stroke="#cc4400" stroke-width="9"  opacity="0.75"/>
+<ellipse cx="340" cy="210" rx="143" ry="19" fill="none" stroke="#ee6600" stroke-width="5"  opacity="0.85"/>
+<ellipse cx="340" cy="210" rx="130" ry="15" fill="none" stroke="#ff8800" stroke-width="3"  opacity="0.92"/>
+<ellipse cx="340" cy="210" rx="118" ry="12" fill="none" stroke="#ffaa22" stroke-width="2"  opacity="0.96"/>
+<ellipse cx="340" cy="210" rx="110" ry="9.5" fill="none" stroke="#ffcc44" stroke-width="1.2"/>
+<ellipse cx="340" cy="210" rx="104" ry="7.5" fill="none" stroke="#ffe066" stroke-width="0.7"/>
 
-<!-- LEFT compressed wavefronts -->
-<g stroke-linecap="round" fill="none">
-  <line x1="248" y1="210" x2="248" y2="246" stroke="#0099ee" stroke-width="1.5" opacity="0.6"/>
-  <line x1="255" y1="207" x2="255" y2="249" stroke="#00aaff" stroke-width="1.6" opacity="0.7"/>
-  <line x1="263" y1="204" x2="263" y2="252" stroke="#00bbff" stroke-width="1.7" opacity="0.75"/>
-  <line x1="271" y1="202" x2="271" y2="254" stroke="#00ccff" stroke-width="1.8" opacity="0.8"/>
-  <line x1="279" y1="201" x2="279" y2="255" stroke="#00ddff" stroke-width="1.8" opacity="0.85"/>
-  <line x1="286" y1="200" x2="286" y2="256" stroke="#22ddff" stroke-width="1.9" opacity="0.88"/>
-  <line x1="292" y1="200" x2="292" y2="256" stroke="#44eeff" stroke-width="1.9" opacity="0.9"/>
-  <line x1="297" y1="201" x2="297" y2="255" stroke="#66eeff" stroke-width="1.9" opacity="0.88"/>
-  <line x1="301" y1="202" x2="301" y2="254" stroke="#88ffff" stroke-width="1.8" opacity="0.8"/>
-  <line x1="305" y1="204" x2="305" y2="252" stroke="#aaffff" stroke-width="1.6" opacity="0.7"/>
-  <line x1="308" y1="207" x2="308" y2="249" stroke="#ccffff" stroke-width="1.4" opacity="0.55"/>
-  <line x1="311" y1="211" x2="311" y2="245" stroke="#eeffff" stroke-width="1.1" opacity="0.38"/>
-  <line x1="313" y1="217" x2="313" y2="239" stroke="#ffffff" stroke-width="0.8" opacity="0.22"/>
+<!-- ── LEFT: signal wave ────────────────────────────────── -->
+<!-- Glow halo -->
+<path d="M100,210 C122,178 148,242 170,210 C184,190 198,230 210,210 C218,198 226,222 232,210 C236,203 240,217 243,210"
+  fill="none" stroke="#00bbff" stroke-width="8" stroke-linecap="round" opacity="0.18" filter="url(#signalGlow)"/>
+<!-- Crisp wave -->
+<path d="M100,210 C122,178 148,242 170,210 C184,190 198,230 210,210 C218,198 226,222 232,210 C236,203 240,217 243,210"
+  fill="none" stroke="url(#sigL)" stroke-width="2.5" stroke-linecap="round"/>
+
+<!-- LEFT: compressed wavefronts approaching black hole -->
+<g stroke-linecap="round" fill="none" filter="url(#signalGlow)">
+  <line x1="252" y1="193" x2="252" y2="227" stroke="#0088ee" stroke-width="1.6" opacity="0.65"/>
+  <line x1="259" y1="190" x2="259" y2="230" stroke="#00aaff" stroke-width="1.7" opacity="0.75"/>
+  <line x1="267" y1="187" x2="267" y2="233" stroke="#00bbff" stroke-width="1.8" opacity="0.82"/>
+  <line x1="275" y1="185" x2="275" y2="235" stroke="#00ccff" stroke-width="1.9" opacity="0.88"/>
+  <line x1="283" y1="184" x2="283" y2="236" stroke="#22ddff" stroke-width="2.0" opacity="0.92"/>
+  <line x1="290" y1="183" x2="290" y2="237" stroke="#44eeff" stroke-width="2.0" opacity="0.95"/>
+  <line x1="296" y1="183" x2="296" y2="237" stroke="#66eeff" stroke-width="2.0" opacity="0.95"/>
+  <line x1="301" y1="184" x2="301" y2="236" stroke="#88ffff" stroke-width="1.9" opacity="0.88"/>
+  <line x1="306" y1="186" x2="306" y2="234" stroke="#aaffff" stroke-width="1.7" opacity="0.78"/>
+  <line x1="310" y1="189" x2="310" y2="231" stroke="#ccffff" stroke-width="1.5" opacity="0.62"/>
+  <line x1="313" y1="193" x2="313" y2="227" stroke="#eeffff" stroke-width="1.2" opacity="0.44"/>
+  <line x1="315" y1="199" x2="315" y2="221" stroke="#ffffff" stroke-width="0.9" opacity="0.28"/>
 </g>
 
-<!-- RIGHT stretched wavefronts -->
-<g stroke-linecap="round" fill="none">
-  <line x1="367" y1="217" x2="367" y2="239" stroke="#ffffff"  stroke-width="0.8" opacity="0.22"/>
-  <line x1="369" y1="211" x2="369" y2="245" stroke="#ee88ff"  stroke-width="1.1" opacity="0.38"/>
-  <line x1="372" y1="207" x2="372" y2="249" stroke="#dd66ff"  stroke-width="1.4" opacity="0.55"/>
-  <line x1="376" y1="204" x2="376" y2="252" stroke="#cc44ff"  stroke-width="1.6" opacity="0.7"/>
-  <line x1="381" y1="202" x2="381" y2="254" stroke="#bb33ee"  stroke-width="1.8" opacity="0.8"/>
-  <line x1="387" y1="201" x2="387" y2="255" stroke="#aa22dd"  stroke-width="1.8" opacity="0.85"/>
-  <line x1="395" y1="200" x2="395" y2="256" stroke="#9922cc"  stroke-width="1.9" opacity="0.88"/>
-  <line x1="405" y1="201" x2="405" y2="255" stroke="#8822bb"  stroke-width="1.8" opacity="0.82"/>
-  <line x1="418" y1="203" x2="418" y2="253" stroke="#7722aa"  stroke-width="1.7" opacity="0.75"/>
-  <line x1="434" y1="206" x2="434" y2="250" stroke="#6622aa"  stroke-width="1.6" opacity="0.68"/>
-  <line x1="454" y1="211" x2="454" y2="245" stroke="#5533aa"  stroke-width="1.5" opacity="0.6"/>
-  <line x1="478" y1="217" x2="478" y2="239" stroke="#4433bb"  stroke-width="1.3" opacity="0.5"/>
+<!-- ── RIGHT: stretched wavefronts ─────────────────────── -->
+<g stroke-linecap="round" fill="none" filter="url(#signalGlow)">
+  <line x1="365" y1="199" x2="365" y2="221" stroke="#ffffff"  stroke-width="0.9" opacity="0.28"/>
+  <line x1="367" y1="193" x2="367" y2="227" stroke="#ff99ff"  stroke-width="1.2" opacity="0.44"/>
+  <line x1="370" y1="189" x2="370" y2="231" stroke="#ee77ff"  stroke-width="1.5" opacity="0.62"/>
+  <line x1="374" y1="186" x2="374" y2="234" stroke="#dd55ff"  stroke-width="1.7" opacity="0.78"/>
+  <line x1="379" y1="184" x2="379" y2="236" stroke="#cc44ff"  stroke-width="1.9" opacity="0.88"/>
+  <line x1="385" y1="183" x2="385" y2="237" stroke="#bb33ee"  stroke-width="2.0" opacity="0.95"/>
+  <line x1="393" y1="183" x2="393" y2="237" stroke="#aa22dd"  stroke-width="2.0" opacity="0.95"/>
+  <line x1="403" y1="184" x2="403" y2="236" stroke="#9922cc"  stroke-width="1.9" opacity="0.92"/>
+  <line x1="416" y1="185" x2="416" y2="235" stroke="#8822bb"  stroke-width="1.8" opacity="0.85"/>
+  <line x1="432" y1="187" x2="432" y2="233" stroke="#7722aa"  stroke-width="1.7" opacity="0.76"/>
+  <line x1="452" y1="190" x2="452" y2="230" stroke="#6622aa"  stroke-width="1.6" opacity="0.66"/>
+  <line x1="476" y1="195" x2="476" y2="225" stroke="#5533bb"  stroke-width="1.4" opacity="0.54"/>
 </g>
 
-<!-- RIGHT wave outline -->
-<path d="M440,228 C462,202 490,254 518,228 C536,212 554,244 572,228 C582,218 592,238 600,228"
-  fill="none" stroke="url(#sigR)" stroke-width="2.2" stroke-linecap="round"/>
-<path d="M440,228 C462,202 490,254 518,228 C536,212 554,244 572,228 C582,218 592,238 600,228"
-  fill="none" stroke="#aa44ff" stroke-width="6" stroke-linecap="round" opacity="0.1" filter="url(#blur3)"/>
+<!-- RIGHT: signal wave -->
+<path d="M437,210 C462,178 492,242 518,210 C536,188 556,232 574,210 C585,196 596,224 608,210"
+  fill="none" stroke="#aa44ff" stroke-width="8" stroke-linecap="round" opacity="0.18" filter="url(#signalGlow)"/>
+<path d="M437,210 C462,178 492,242 518,210 C536,188 556,232 574,210 C585,196 596,224 608,210"
+  fill="none" stroke="url(#sigR)" stroke-width="2.5" stroke-linecap="round"/>
 
-<!-- Black hole -->
-<circle cx="340" cy="228" r="58" fill="#000000"/>
-<circle cx="340" cy="228" r="58" fill="none" stroke="#ff8800" stroke-width="1.2" opacity="0.55"/>
-<circle cx="340" cy="228" r="58" fill="none" stroke="#ffaa33" stroke-width="0.5" opacity="0.75"/>
-<circle cx="340" cy="228" r="4"  fill="#0a0500"/>
-<circle cx="340" cy="228" r="2"  fill="#150a00"/>
+<!-- ── Black hole ─────────────────────────────────────────── -->
+<!-- Deep outer glow -->
+<circle cx="340" cy="210" r="68" fill="#110500" opacity="0.8" filter="url(#diskBloom)"/>
+<!-- Black hole body -->
+<circle cx="340" cy="210" r="62" fill="#000000"/>
+<!-- Photon sphere / event horizon edge — bright -->
+<circle cx="340" cy="210" r="62" fill="none" stroke="#ff7700" stroke-width="3"   opacity="0.7" filter="url(#holeEdge)"/>
+<circle cx="340" cy="210" r="62" fill="none" stroke="#ffaa33" stroke-width="1.5" opacity="0.9"/>
+<circle cx="340" cy="210" r="62" fill="none" stroke="#ffdd66" stroke-width="0.6"/>
 
-<!-- Divider -->
-<line x1="200" y1="348" x2="480" y2="348" stroke="rgba(0,180,160,0.2)" stroke-width="0.8"/>
+<!-- ── Divider ──────────────────────────────────────────── -->
+<line x1="180" y1="330" x2="500" y2="330" stroke="#00ddcc" stroke-width="0.6" opacity="0.4"/>
 
-<!-- WORDMARK — teal glow layers -->
-<text x="340" y="402" text-anchor="middle"
+<!-- ── WORDMARK ────────────────────────────────────────── -->
+<!-- Outer soft bloom -->
+<text x="340" y="388" text-anchor="middle"
   font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif"
-  font-size="54" font-weight="300" letter-spacing="16"
-  fill="#00ffdd" opacity="0.18"
-  filter="url(#tealGlowSoft)">AEVYRA</text>
-
-<text x="340" y="402" text-anchor="middle"
+  font-size="58" font-weight="300" letter-spacing="18"
+  fill="#00ffee" opacity="0.3"
+  filter="url(#wordGlow)">AEVYRA</text>
+<!-- Mid glow -->
+<text x="340" y="388" text-anchor="middle"
   font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif"
-  font-size="54" font-weight="300" letter-spacing="16"
-  fill="#00eedd" opacity="0.55"
-  filter="url(#tealGlow)">AEVYRA</text>
-
-<text x="340" y="402" text-anchor="middle"
+  font-size="58" font-weight="300" letter-spacing="18"
+  fill="#00eedd" opacity="0.65"
+  filter="url(#softBloom)">AEVYRA</text>
+<!-- Crisp top layer — full opacity -->
+<text x="340" y="388" text-anchor="middle"
   font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif"
-  font-size="54" font-weight="300" letter-spacing="16"
-  fill="url(#tealG)">AEVYRA</text>
+  font-size="58" font-weight="300" letter-spacing="18"
+  fill="url(#wordGrad)">AEVYRA</text>
 
-<!-- TAGLINE — teal glow bloom -->
-<text x="340" y="450" text-anchor="middle"
+<!-- ── TAGLINE ─────────────────────────────────────────── -->
+<!-- Glow bloom -->
+<text x="340" y="434" text-anchor="middle"
   font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif"
-  font-size="13" font-style="italic" letter-spacing="5"
-  fill="#00ddcc" opacity="0.3"
+  font-size="14" font-style="italic" letter-spacing="6"
+  fill="#00ffdd" opacity="0.45"
   filter="url(#tagGlow)">intelligence from beyond</text>
-
-<!-- TAGLINE — crisp layer -->
-<text x="340" y="450" text-anchor="middle"
+<!-- Crisp layer -->
+<text x="340" y="434" text-anchor="middle"
   font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif"
-  font-size="13" font-style="italic" letter-spacing="5"
-  fill="#00bbaa" opacity="0.75">intelligence from beyond</text>
+  font-size="14" font-style="italic" letter-spacing="6"
+  fill="#00ddbb">intelligence from beyond</text>
 
 </svg>
